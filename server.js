@@ -16,9 +16,10 @@ mongoose.connect(process.env.MONGO_URI)
     console.error('Error connecting to MongoDB:', err);
   });
 
-  app.get('/api/test', (req, res) => {
-    res.json({ message: 'Backend connected!' });
-  });
+
+  // routes
+  const userRoutes = require('./routes/userRoutes');
+  app.use('/', userRoutes);
 
 // start server
 const PORT = process.env.PORT ;
